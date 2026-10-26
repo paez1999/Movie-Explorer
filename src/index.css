@@ -1,0 +1,311 @@
+:root {
+  color-scheme: dark;
+  --bg: #14120f;
+  --surface: #1d1a15;
+  --text: #ebe3d2;
+  --muted: #8f8676;
+  --line: #3a352c;
+  --accent: #e3a72f;
+  --danger: #d9644a;
+  --display: "Fraunces", Georgia, serif;
+  --body: "Instrument Sans", system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.4;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* NavBar fija */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  z-index: 100;
+}
+
+.navbar-brand {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.8rem;
+}
+
+.nav-link {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.3rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.nav-link:hover {
+  color: var(--text);
+}
+
+.nav-link.active {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+.main-content {
+  padding: 100px 2rem 3rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Búsqueda */
+.search-form {
+  display: flex;
+  max-width: 640px;
+  margin: 0 auto 3rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-right: none;
+  border-radius: 0;
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 1rem;
+}
+
+.search-input::placeholder {
+  color: var(--muted);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.search-button {
+  padding: 0.8rem 1.6rem;
+  border: 1px solid var(--accent);
+  border-radius: 0;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.search-button:hover {
+  background: transparent;
+  color: var(--accent);
+}
+
+/* Mensajes */
+.loading,
+.empty-message,
+.favorites-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--muted);
+}
+
+.favorites-empty h2 {
+  font-style: normal;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.error-message {
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.favorites h2 {
+  font-family: var(--display);
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Cuadrícula */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2.4rem 1.6rem;
+}
+
+/* Tarjeta */
+.movie-card {
+  background: none;
+}
+
+.movie-poster {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+
+.movie-card:hover .movie-poster {
+  transform: translate(-4px, -4px);
+  border-color: var(--accent);
+  box-shadow: 6px 6px 0 var(--accent);
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.no-poster {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--muted);
+}
+
+.movie-info {
+  padding: 0.8rem 0 0;
+}
+
+.movie-info h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.movie-info p {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+/* Overlay: barra ámbar que sube al hacer hover */
+.movie-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.6rem;
+  background: var(--accent);
+  transform: translateY(100%);
+  transition: transform 0.2s ease;
+}
+
+.movie-card:hover .movie-overlay,
+.movie-card:focus-within .movie-overlay {
+  transform: translateY(0);
+}
+
+.favorite-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--bg);
+  border-radius: 0;
+  background: transparent;
+  color: var(--bg);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.favorite-btn:hover {
+  background: var(--bg);
+  color: var(--accent);
+}
+
+.favorite-btn.active {
+  background: var(--bg);
+  color: var(--accent);
+}
+
+/* En táctil no hay hover: barra siempre visible */
+@media (hover: none) {
+  .movie-overlay {
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .navbar-links {
+    gap: 1rem;
+  }
+
+  .main-content {
+    padding: 90px 1rem 2rem;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1.6rem 1rem;
+  }
+
+  .favorites h2 {
+    font-size: 1.8rem;
+  }
+}
