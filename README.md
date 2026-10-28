@@ -1,16 +1,61 @@
-# React + Vite
+# Movie Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Aplicación web hecha con React que muestra las películas populares y permite buscarlas por título usando la API de TMDB. Las películas se pueden marcar como favoritas y la lista se conserva en el navegador.
 
-Currently, two official plugins are available:
+Práctica 2 de Diseño y despliegue de aplicaciones multiplataforma (UCJC).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Funcionalidades
 
-## React Compiler
+- Listado de películas populares al abrir la app
+- Búsqueda por título
+- Favoritos que se guardan en localStorage
+- Dos páginas, Home y Favorites, con React Router
+- Diseño adaptable a móvil
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tecnologías
 
-## Expanding the Oxlint configuration
+- React
+- Vite
+- React Router
+- API de TMDB
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Cómo ejecutarlo
+
+1. Clona el repositorio e instala las dependencias:
+
+   ```bash
+   git clone https://github.com/TU_USUARIO/movie-explorer.git
+   cd movie-explorer
+   npm install
+   ```
+
+2. Crea un archivo `.env` en la raíz con tu API key de TMDB (puedes copiar `.env.example`):
+
+   ```
+   VITE_TMDB_API_KEY=tu_api_key
+   ```
+
+3. Arranca el servidor de desarrollo:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Abre `http://localhost:5173`.
+
+## Estructura
+
+```
+src/
+├── components/   Navbar y MovieCard
+├── contexts/     MovieContext (favoritos)
+├── pages/        Home y Favorites
+├── services/     api.js (peticiones a TMDB)
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+## Créditos
+
+Los datos de las películas vienen de [TMDB](https://www.themoviedb.org/). Este proyecto usa la API de TMDB pero no está avalado ni certificado por TMDB.

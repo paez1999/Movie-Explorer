@@ -1,3 +1,4 @@
+/* colores y fuentes en variables: para cambiar el tema solo toco estas líneas */
 :root {
   color-scheme: dark;
   --bg: #14120f;
@@ -75,12 +76,14 @@ body {
   color: var(--text);
 }
 
+/* NavLink pone la clase active en la página actual */
 .nav-link.active {
   color: var(--text);
   border-bottom-color: var(--accent);
 }
 
 .main-content {
+  /* mucho padding arriba porque la navbar fija no ocupa sitio y taparía el contenido */
   padding: 100px 2rem 3rem;
   max-width: 1300px;
   margin: 0 auto;
@@ -172,6 +175,7 @@ body {
 /* Cuadrícula */
 .movies-grid {
   display: grid;
+  /* tantas columnas de al menos 200px como quepan, sin media queries */
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 2.4rem 1.6rem;
 }
@@ -182,6 +186,7 @@ body {
 }
 
 .movie-poster {
+  /* relative para colocar el overlay encima; overflow hidden lo esconde cuando está fuera */
   position: relative;
   aspect-ratio: 2 / 3;
   overflow: hidden;
@@ -243,6 +248,7 @@ body {
   justify-content: flex-end;
   padding: 0.6rem;
   background: var(--accent);
+  /* empieza desplazado hacia abajo, fuera del póster */
   transform: translateY(100%);
   transition: transform 0.2s ease;
 }
